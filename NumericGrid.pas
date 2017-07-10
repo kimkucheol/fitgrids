@@ -43,6 +43,10 @@ const
     //POS_INT_SET: set of Char = ['0'..'9', '+'];
     CHAR_SET: set of Char = ['A'..'Z', 'a'..'z'];
 
+    const DelimiterChars: set of Char = [#9, #10, #13, ' ', ',', ';'];
+    //  Maximum size of pasted data.
+    const BufCount = 10240;
+
 type
     EColorStringGrid = class(Exception);
     ENumericGrid = class(Exception);
@@ -146,10 +150,6 @@ type
         function GetColCount: LongInt; virtual;
         procedure SetRowCount(Value: Longint); virtual;
         function GetRowCount: LongInt; virtual;
-
-        const DelimiterChars: set of Char = [#9, #10, #13, ' ', ',', ';'];
-        //  Maximum size of pasted data.
-        const BufCount = 10240;
 
         procedure ExtractGridSizes(Buffer: array of Char;
             const Count: LongInt; var BufferCols, BufferRows: LongInt);
